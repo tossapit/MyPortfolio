@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ทศพิธธาดา - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;700&display=swap");
+
+        body {
+            font-family: "Kanit", sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            /* ความกว้างของ scrollbar */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            /* สีเทา (gray-300) */
+            border-radius: 20px;
+            /* เพิ่มขอบสีเดียวกับพื้นหลัง Body (light mode) */
+            border: 2px solid #f3f4f6;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #9ca3af;
+            /* สีเทาเข้มขึ้น (gray-400) */
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background-color: #4b5563;
+            border: 2px solid #111827;
+        }
+
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background-color: #374151;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
+    <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50 transition-colors duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+                <a href="#home">TosCS</a>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About Me</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#contact" class="nav-link">Contact</a>
+
+                <button id="theme-toggle-btn"
+                    class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none transition-colors">
+                    <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" stroke="currentColor" fill="none"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="12" cy="12" r="3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        </circle>
+                        <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+                    </svg>
+                </button>
+
+                <a href="YOUR_RESUME.pdf" target="_blank"
+                    class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition">
+                    Resume / CV
+                </a>
+            </div>
+
+            <div class="md:hidden flex items-center space-x-3">
+                <button id="theme-toggle-btn-mobile"
+                    class="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none transition-colors">
+                    <svg id="theme-toggle-dark-icon-mobile" class="w-5 h-5 hidden" fill="currentColor"
+                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg id="theme-toggle-light-icon-mobile" class="w-5 h-5 hidden" fill="currentColor"
+                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm0 16a1 1 0 01-1-1v-1a1 1 0 112 0v1a1 1 0 01-1 1zM4.343 4.343a1 1 0 011.414 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zm11.314 11.314a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM2 10a1 1 0 011-1h1a1 1 0 110 2H3a1 1 0 01-1-1zm16 0a1 1 0 011-1h1a1 1 0 110 2h-1a1 1 0 01-1-1zM4.343 15.657a1 1 0 010-1.414l.707-.707a1 1 0 111.414 1.414l-.707.707a1 1 0 01-1.414 0zm11.314-11.314a1 1 0 011.414 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zM10 5a5 5 0 100 10 5 5 0 000-10z">
+                        </path>
+                    </svg>
+                </button>
+
+                <button id="mobile-menu-btn" class="text-gray-700 dark:text-gray-300 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-800 shadow-lg">
+            <a href="#home" class="mobile-nav-link">Home</a>
+            <a href="#about" class="mobile-nav-link">About Me</a>
+            <a href="#projects" class="mobile-nav-link">Projects</a>
+            <a href="#skills" class="mobile-nav-link">Skills</a>
+            <a href="#contact" class="mobile-nav-link">Contact</a>
+            <a href="YOUR_RESUME.pdf" target="_blank"
+                class="block w-full text-center px-4 py-3 bg-indigo-600 text-white hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition">
+                Resume / CV
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section id="home"
+            class="h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+            <div class="text-center p-6">
+                <h1 class="text-5xl md:text-7xl font-bold mb-4 leading-loose">
+                    <span class="block">สวัสดีครับผมชื่อ</span>
+                    <span class="block mt-4 md:mt-6">ทศพิธธาดา เอี้ยวสุวรรณ</span>
+                </h1>
+                <p class="text-2xl md:text-3xl text-indigo-600 dark:text-indigo-400 mb-8">
+                    Dayta Analyst | Developer
+                </p>
+                <a href="#projects"
+                    class="bg-indigo-600 text-white px-6 py-3 rounded-md text-lg hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition">
+                    ดูผลงานของฉัน
+                </a>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12">About Me</h2>
+                <div class="flex flex-col md:flex-row items-center max-w-4xl mx-auto">
+                    <img src="img/Me.jpg" alt="รูปโปรไฟล์"
+                        class="w-64 h-64 rounded-full object-cover shadow-lg mb-8 md:mb-0 md:mr-12 flex-shrink-0" />
+                    <div class="text-lg text-gray-700 dark:text-gray-300 max-h-[500px] overflow-y-auto pr-10">
+                        <p class="mb-5">
+                            ชื่อ - สกุล : ทศพิธธาดา เอี้ยวสุวรรณ <br>
+                            ชื่อเล่น : วิว <br>
+                            ที่อยู่ตามทะเบียนบ้าน : พระนครศรีอยุธยา <br>
+                            ที่อยู่ปัจจุบัน : ปทุมธานี <br>
+                            วันเกิด : 14 สิงหาคม 2002 <br>
+                        </p>
+                        <h2 class="text-xl font-bold mb-2">
+                            การศึกษา
+                        </h2>
+                        <p class="mb-4">
+                            <span class="inline-flex items-center text-lg">
+                                <svg class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mr-3" viewBox="0 0 24 24" fill="currentColor"
+                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2L1 7l11 5 9-4.09V17h2V7L12 2z" />
+                                    <path d="M11 12.5v7.5h2v-7.5l-1 .5-1-.5z" />
+                                </svg>
+                                <span>มหาวิทยาลัยกรุงเทพ</span>
+                            </span>
+                            <br>
+                            คณะเทคโนโลยีสารสนเทศและนวัตกรรม สาขาวิชาวิทยาการคอมพิวเตอร์ <br>
+                            มุ่งเน้นวิทยาการข้อมูลและความมั่นคงปลอดภัยไซเบอร์ <br>
+                            <span class="block text-sm font-light text-gray-500 dark:text-gray-400 mt-2">ปีการศึกษา 2021-2025</span>
+                        </p>
+                        <p class="mb-5">
+                            <span class="inline-flex items-center text-lg">
+                                <i class="fa-solid fa-school text-indigo-600 dark:text-indigo-400 mr-3" aria-hidden="true"></i>
+                                <span>โรงเรียนสาธิตมหาวิทยาลัยราชภัฏวไลยอลงกรณ์ ในพระบรมราชูปถัมภ์</span>
+                            </span>
+                            <br>
+                            แผนการเรียน วิทยาศาสตร์ - คณิตศาสตร์ <br>
+                            <span class="block text-base font-light text-gray-500 dark:text-gray-400">ปีการศึกษา 2019-2021</span>
+                        </p>
+                        <h2 class="text-xl font-bold mb-2">
+                            ประสบการณ์การทำงาน
+                        </h2>
+                        <p class="mb-5">
+                            <span class="inline-flex items-center text-lg">
+                                <i class="fa-solid fa-briefcase text-indigo-600 dark:text-indigo-400 mr-3" aria-hidden="true"></i>
+                                <span>Siam Software Solution Co.,LTD</span>
+                            </span>
+                            <br>
+                            ตำแหน่ง : Full Stack Developer (ฝึกงาน)<br>
+                            <span class="block text-base font-light text-gray-500 dark:text-gray-400">ระยะเวลา : 4 เดือน</span>
+                        </p>
+                        <h2 class="text-xl font-bold mb-2">
+                            กิจกรรม
+                        </h2>
+                        <p class="mb-2">
+                            <span class="inline-flex items-center text-lg">
+                                 <i class="fa-solid fa-calendar-days text-indigo-600 dark:text-indigo-400 mr-3" aria-hidden="true"></i>
+                                <span>BU OPEN HOUSE 2024</span>
+                            </span>
+                            <br>
+                            ในงาน Open House BU 2024
+                            ผมได้มีโอกาสเป็นส่วนหนึ่งในการแนะนำคณะเทคโนโลยีสารสนเทศและนวัตกรรม<br>
+                            สาขาวิชาวิทยาการคอมพิวเตอร์ ให้กับน้อง ๆ ที่กำลังมองหามหาวิทยาลัย <br>
+                            ผมได้แบ่งปันประสบการณ์การเรียนและมุมมองด้านเทคโนโลยี <br>
+                            เพื่อช่วยให้น้อง ๆ เห็นภาพและเข้าใจเส้นทางในสาย Computer Science ชัดเจนยิ่งขึ้น
+                        </p>
+                        <div class="flex justify-start md:justify-start mb-5">
+                            <img src="img/asd.jpg" alt="BU Open House 2024"
+                                class="rounded-lg shadow-lg object-cover w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64" />
+                        </div>
+                        <p class="mb-2">
+                            <span class="inline-flex items-center text-lg">
+                                <i class="fa-solid fa-calendar-days text-indigo-600 dark:text-indigo-400 mr-3" aria-hidden="true"></i>
+                                <span>Digital Job Connect 2024</span>
+                            </span>
+                            <br>
+                            ผมเข้าร่วมงาน Digital Job Connect 2024 ซึ่งเป็นงานจับคู่คนทำงานและนักศึกษาด้านดิจิทัล/ไอที ผมได้สำรวจบูธหลายบริษัท,
+                            สอบถามโอกาสงาน และทักษะที่นายจ้างต้องการ ทำให้ได้ความรู้และเข้าใจแนวทางการเข้าสู่ตลาดแรงงานยุคเทคโนโลยีมากขึ้น
+                        </p>
+                        <div class="flex justify-start md:justify-start mb-5">
+                            <img src="img/IMG_20240514_174834_684.jpg" alt="BU Open House 2024"
+                                class="rounded-lg shadow-lg object-cover w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64" />
+                        </div>
+                        <p class="mb-2">
+                            <span class="inline-flex items-center text-lg">
+                                <i class="fa-solid fa-calendar-days text-indigo-600 dark:text-indigo-400 mr-3" aria-hidden="true"></i>
+                                <span>BU JOB FAIR 2023</span>
+                            </span>
+                            <br>
+                            ผมเข้าร่วมงาน BU JOB FAIR 2023 ของมหาวิทยาลัยกรุงเทพฯ เพื่อหาข้อมูลงาน ผมได้เดินสำรวจบูธและสอบถามบริษัทต่างๆ
+                            เกี่ยวกับตำแหน่งงานว่างและทักษะที่นายจ้างต้องการ ทำให้ผมเข้าใจทิศทางและแนวทางการเข้าสู่ตลาดแรงงานได้ดียิ่งขึ้น
+                        </p>
+                        <div class="flex justify-start md:justify-start mb-5">
+                            <img src="img/lineMan2.jpg" alt="BU Open House 2024"
+                                class="rounded-lg shadow-lg object-cover w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64" />
+                        </div>
+                        <p class="mb-4">
+                            <span class="inline-flex items-center text-lg">
+                                <i class="fa-solid fa-calendar-days text-indigo-600 dark:text-indigo-400 mr-3" aria-hidden="true"></i>
+                                <span>Open House BU 2023</span>
+                            </span>
+                            <br>
+                            ผมเข้าร่วมงาน Open House BU 2023 ในฐานะ TA สำหรับ Workshop IoT ผมทำหน้าที่ให้คำแนะนำ, แก้ไขปัญหาเฉพาะหน้า
+                            และให้ข้อมูลเสริมแก่น้อง ๆ เพื่อให้การเรียนรู้ในกิจกรรมเป็นไปอย่างมีประสิทธิภาพ
+                        </p>
+                        <p class="mb-2">
+                            <span class="inline-flex items-center text-lg">
+                                <i class="fa-solid fa-calendar-days text-indigo-600 dark:text-indigo-400 mr-3" aria-hidden="true"></i>
+                                <span>Open House BU - Private Tour 2021</span>
+                            </span>
+                            <br>
+                            ผมเข้าร่วมงาน Open House BU 2021 เพื่อแนะนำคณะ/สาขาวิทยาการคอมพิวเตอร์ และแชร์ประสบการณ์ด้าน Computer Science
+                            เพื่อช่วยให้น้อง ๆ เข้าใจโอกาสในสายงานและตัดสินใจเลือกเรียนต่อ
+                        </p>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12">Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- TamrapAhan (gallery: tamrap) -->
+<div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+  <button type="button" data-lightbox data-gallery="tamrap" data-src="img/หน้าหลัก.png" class="w-full block focus:outline-none">
+    <img src="img/หน้าหลัก.png" alt="TamrapAhan" class="w-full h-48 object-contain bg-gray-100 rounded-t-lg" />
+  </button>
+  <button type="button" data-lightbox data-gallery="tamrap" data-src="img/สูตรอาหาร.png" class="hidden"></button>
+  <button type="button" data-lightbox data-gallery="tamrap" data-src="img/สูตรของฉัน.png" class="hidden"></button>
+  <button type="button" data-lightbox data-gallery="tamrap" data-src="img/โพสต์.png" class="hidden"></button>
+  <div class="p-6">
+    <h3 class="text-2xl font-bold mb-2 dark:text-white">
+      TamrapAhan
+    </h3>
+    <ul class="text-gray-700 dark:text-gray-300 mb-2 list-disc pl-6 space-y-2">
+      <li>พัฒนาแอปพลิเคชันมือถือ (iOS/Android) สำหรับจัดการสูตรอาหารโดยใช้ .NET MAUI และ C#</li>
+      <li>ออกแบบและติดตั้งฟีเจอร์การแสดงผลสูตรอาหาร (รูปภาพ, ส่วนผสม, วิธีทำ)</li>
+      <li>สร้างระบบที่อนุญาตให้ผู้ใช้เพิ่มและบันทึกสูตรอาหารของตนเอง (User-Generated Content)</li>
+      <li>รองรับการอัปโหลดรูปภาพประกอบและการจัดการไฟล์</li>
+    </ul>
+    <div class="flex space-x-4">
+      <a href="https://github.com/tossapit/Proj-MobileApp-TamrapAhan" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 hover:underline">
+        ดู Code (GitHub)
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+  <button type="button" data-lightbox data-gallery="bu-library" data-src="img/image.png" class="w-full block focus:outline-none">
+    <img src="img/image.png" alt="BU Library" class="w-full h-48 object-contain bg-gray-100 rounded-t-lg" />
+  </button>
+  <button type="button" data-lightbox data-gallery="bu-library" data-src="img/ac.png" class="hidden"></button>
+  <button type="button" data-lightbox data-gallery="bu-library" data-src="img/q.png" class="hidden"></button>
+  <button type="button" data-lightbox data-gallery="bu-library" data-src="img/bokk.png" class="hidden"></button>
+  <button type="button" data-lightbox data-gallery="bu-library" data-src="img/ss.png" class="hidden"></button>
+
+  <div class="p-6">
+    <h3 class="text-2xl font-bold mb-2 dark:text-white">
+      BU Library
+    </h3>
+    <ul class="text-gray-700 dark:text-gray-300 mb-2 list-disc pl-6 space-y-2">
+      <li>ออกแบบและพัฒนา (Designed & Developed) Mobile Web App สำหรับระบบจองบริการหอสมุด โดยเป็นส่วนหนึ่งของโปรเจกต์จบการศึกษา</li>
+      <li>ติดตั้ง (Implemented) ฟังก์ชันการจอง 3 ระบบหลัก (ห้องประชุม, ห้องภาพยนตร์, บอร์ดเกม)</li>
+      <li>ใช้ Tailwind CSS เพื่อสร้าง UI ที่มีความสวยงามและตอบสนองต่อทุกขนาดหน้าจอ</li>
+      <li>ใช้ JavaScript ในการจัดการสถานะ และการโต้ตอบของผู้ใช้ ในฝั่ง Front-End</li>
+    </ul>
+  </div>
+</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+            <div class="container mx-auto px-6 max-w-3xl">
+                <h2 class="text-4xl font-bold text-center mb-12">Skills</h2>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="skill-badge">HTML</span>
+                    <span class="skill-badge">CSS</span>
+                    <span class="skill-badge">Tailwind CSS</span>
+                    <span class="skill-badge">JavaScript</span>
+                    <span class="skill-badge">Python</span>
+                    <span class="skill-badge">SQL</span>
+                    <span class="skill-badge">Power BI</span>
+                    <span class="skill-badge">C#</span>
+                    <span class="skill-badge">.NET MAUI</span>
+                    <span class="skill-badge">Figma</span>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+            <div class="container mx-auto px-6 max-w-lg">
+                <h2 class="text-4xl font-bold text-center mb-12">Contact Me</h2>
+                <p class="text-center text-lg text-gray-700 dark:text-gray-300 mb-8">
+                    สนใจร่วมงาน? สามารถติดต่อผมได้ทางอีเมล
+                    <a href="mailto:youremail@example.com"
+                        class="text-indigo-600 dark:text-indigo-400 hover:underline">[youremail@example.com]</a>
+                </p>
+
+                <form action="#" method="POST" class="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-lg space-y-4">
+                    <div>
+                        <label for="name" class="block text-gray-700 dark:text-gray-200 font-medium mb-2">Name</label>
+                        <input type="text" id="name" name="name" class="form-input" required />
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-700 dark:text-gray-200 font-medium mb-2">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" required />
+                    </div>
+                    <div>
+                        <label for="message"
+                            class="block text-gray-700 dark:text-gray-200 font-medium mb-2">Message</label>
+                        <textarea id="message" name="message" rows="5" class="form-input" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit"
+                            class="w-full bg-indigo-600 text-white px-6 py-3 rounded-md text-lg hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <!-- เปลี่ยน modal ให้รองรับภาพเต็มหน้าจอ และมี prev/next -->
+<div id="lightbox-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+  <div class="relative w-full max-w-[95vw]">
+    <button id="lightbox-close"
+      class="absolute top-3 right-3 z-30 bg-white/90 dark:bg-gray-800 rounded-full p-3 hover:scale-105 transition text-2xl w-12 h-12 flex items-center justify-center"
+      aria-label="Close lightbox">&times;</button>
+
+    <button id="lightbox-prev"
+      class="absolute left-3 top-1/2 z-30 -translate-y-1/2 bg-white/80 dark:bg-gray-800 rounded-full p-2 hover:scale-105 transition w-10 h-10 flex items-center justify-center"
+      aria-label="Previous">&#8249;</button>
+
+    <img id="lightbox-img" src="" alt="Preview"
+      class="block mx-auto max-h-[90vh] w-auto max-w-full rounded-lg shadow-lg object-contain bg-white" />
+
+    <button id="lightbox-next"
+      class="absolute right-3 top-1/2 z-30 -translate-y-1/2 bg-white/80 dark:bg-gray-800 rounded-full p-2 hover:scale-105 transition w-10 h-10 flex items-center justify-center"
+      aria-label="Next">&#8250;</button>
+  </div>
+</div>
+
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 ทศพิธธาดา เอี้ยวสุวรรณ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                },
+            },
+            plugins: [
+                function ({ addComponents }) {
+                    addComponents({
+                        ".nav-link": {
+                            "@apply text-gray-600 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 transition-colors":
+                                {},
+                        },
+                        ".mobile-nav-link": {
+                            "@apply block px-4 py-3 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700 transition-colors":
+                                {},
+                        },
+                        ".skill-badge": {
+                            "@apply bg-indigo-100 text-indigo-800 text-lg font-medium px-4 py-2 rounded-full dark:bg-indigo-900 dark:text-indigo-200 transition-colors":
+                                {},
+                        },
+                        ".form-input": {
+                            "@apply w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600 dark:bg-gray-800 dark:border-gray-600 dark:text-white dark:focus:ring-indigo-500 transition-colors":
+                                {},
+                        },
+                    });
+                },
+            ],
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuBtn = document.getElementById("mobile-menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+
+            menuBtn.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+            });
+
+            const allSmoothScrollLinks = document.querySelectorAll('a[href^="#"]');
+
+            allSmoothScrollLinks.forEach((link) => {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+
+                    // 2. หา ID เป้าหมาย (เช่น "#about")
+                    const href = this.getAttribute("href");
+                    const targetId = href.substring(1); // เอา # ออก
+                    const targetElement = document.getElementById(targetId);
+
+                    // 3. จัดการการเลื่อน
+                    if (href === "#" || href === "#home") {
+                        // ถ้าเป็น # หรือ #home ให้เลื่อนไปบนสุด
+                        window.scrollTo({
+                            top: 0,
+                            behavior: "smooth",
+                        });
+                    } else if (targetElement) {
+                        // ถ้ามีเป้าหมาย ให้เลื่อนไปที่เป้าหมายนั้น
+                        targetElement.scrollIntoView({
+                            behavior: "smooth",
+                        });
+                    }
+
+                    // 4. (สำคัญ) ตรวจสอบว่าเป็นการคลิกจากเมนูมือถือหรือไม่
+                    // ถ้าใช่, ให้สั่งปิดเมนูมือถือด้วย (ที่เราลบโค้ดเก่าไป)
+                    if (mobileMenu.contains(this)) {
+                        mobileMenu.classList.add("hidden");
+                    }
+                });
+            });
+
+            // **** 8. JavaScript ใหม่สำหรับ Dark Mode ****
+
+            // เลือกปุ่มและไอคอนทั้งหมด
+            const themeToggleBtns = [
+                document.getElementById("theme-toggle-btn"),
+                document.getElementById("theme-toggle-btn-mobile"),
+            ];
+            const darkIcons = [
+                document.getElementById("theme-toggle-dark-icon"),
+                document.getElementById("theme-toggle-dark-icon-mobile"),
+            ];
+            const lightIcons = [
+                document.getElementById("theme-toggle-light-icon"),
+                document.getElementById("theme-toggle-light-icon-mobile"),
+            ];
+
+            const html = document.documentElement;
+
+            // ฟังก์ชันสำหรับอัปเดต UI (ไอคอน)
+            function updateIcons(theme) {
+                if (theme === "dark") {
+                    darkIcons.forEach((icon) => icon.classList.remove("hidden"));
+                    lightIcons.forEach((icon) => icon.classList.add("hidden"));
+                } else {
+                    darkIcons.forEach((icon) => icon.classList.add("hidden"));
+                    lightIcons.forEach((icon) => icon.classList.remove("hidden"));
+                }
+            }
+
+            // ฟังก์ชันสำหรับตั้งค่าธีม (ทั้ง class และ localStorage)
+            function setTheme(theme) {
+                html.classList.remove("dark", "light");
+                html.classList.add(theme);
+                localStorage.setItem("theme", theme);
+                updateIcons(theme);
+            }
+
+            // (สำคัญ) 8.1: โหลดธีมเมื่อเปิดหน้าเว็บ
+            // 1. เช็ค localStorage ก่อน
+            // 2. ถ้าไม่มี, เช็คการตั้งค่าของ OS (prefers-color-scheme)
+            // 3. ถ้าไม่มี, ใช้ 'light' เป็นค่าเริ่มต้น
+            const currentTheme =
+                localStorage.getItem("theme") ||
+                (window.matchMedia("(prefers-color-scheme: dark)").matches
+                    ? "dark"
+                    : "light");
+
+            // ตั้งค่าธีมและไอคอนตาม currentTheme
+            setTheme(currentTheme);
+
+            // (สำคัญ) 8.2: เพิ่ม Event Listener ให้ปุ่มทั้งสองปุ่ม
+            themeToggleBtns.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    // เช็คว่าปัจจุบันเป็น dark หรือไม่
+                    const isDark = html.classList.contains("dark");
+                    // สลับธีม
+                    setTheme(isDark ? "light" : "dark");
+                });
+            });
+
+            // Lightbox: เปิดภาพเมื่อคลิก และปิดเมื่อคลิกนอกหรือปุ่มปิด หรือกด Esc
+    const lightboxModal = document.getElementById("lightbox-modal");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const lightboxClose = document.getElementById("lightbox-close");
+
+    // Lightbox gallery
+  (function () {
+    const lightboxModal = document.getElementById("lightbox-modal");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const lightboxClose = document.getElementById("lightbox-close");
+    const lightboxPrev = document.getElementById("lightbox-prev");
+    const lightboxNext = document.getElementById("lightbox-next");
+
+    // group images by gallery name (data-gallery) or 'default'
+    const groups = {};
+    document.querySelectorAll("[data-lightbox]").forEach((el) => {
+      const gallery = el.dataset.gallery || "default";
+      const src = el.dataset.src || el.querySelector("img")?.src;
+      if (!src) return;
+      if (!groups[gallery]) groups[gallery] = [];
+      // store index on the element after pushing
+      groups[gallery].push(src);
+      el.dataset.lightboxIndex = (groups[gallery].length - 1).toString();
+      el.addEventListener("click", () => openLightbox(gallery, parseInt(el.dataset.lightboxIndex)));
+    });
+
+    let currentGallery = [];
+    let currentIndex = 0;
+
+    function openLightbox(gallery, index) {
+      currentGallery = groups[gallery] || [];
+      if (!currentGallery.length) return;
+      currentIndex = index || 0;
+      lightboxImg.src = currentGallery[currentIndex];
+      lightboxModal.classList.remove("hidden");
+      document.documentElement.style.overflow = "hidden";
+      updateNav();
+    }
+
+    function closeLightbox() {
+      lightboxModal.classList.add("hidden");
+      lightboxImg.src = "";
+      document.documentElement.style.overflow = "";
+    }
+
+    function showIndex(i) {
+      if (!currentGallery.length) return;
+      currentIndex = (i + currentGallery.length) % currentGallery.length;
+      lightboxImg.src = currentGallery[currentIndex];
+      updateNav();
+    }
+
+    function updateNav() {
+      // ซ่อนปุ่มถ้ามีรูปเดียว
+      const single = currentGallery.length <= 1;
+      lightboxPrev.style.display = single ? "none" : "flex";
+      lightboxNext.style.display = single ? "none" : "flex";
+    }
+
+    lightboxClose.addEventListener("click", closeLightbox);
+
+    lightboxPrev.addEventListener("click", (e) => {
+      e.stopPropagation();
+      showIndex(currentIndex - 1);
+    });
+    lightboxNext.addEventListener("click", (e) => {
+      e.stopPropagation();
+      showIndex(currentIndex + 1);
+    });
+
+    lightboxModal.addEventListener("click", (e) => {
+      if (e.target === lightboxModal) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (lightboxModal.classList.contains("hidden")) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") showIndex(currentIndex - 1);
+      if (e.key === "ArrowRight") showIndex(currentIndex + 1);
+    });
+  })();
+        });
+    </script>
+</body>
+
+</html>
